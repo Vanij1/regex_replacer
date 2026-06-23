@@ -80,11 +80,13 @@ Embed your demo video URL here after recording:
 
 ## Deployment
 
-For a public deployment, a simple path is:
+The repo now includes a `render.yaml` blueprint for a single Render web service that serves the built React app from Django.
 
-1. Deploy the Django backend to Render, Railway, Fly.io, or a similar Python host.
-2. Deploy the React frontend to Vercel or Netlify.
-3. Set the frontend `VITE_API_BASE_URL` to the backend URL.
-4. Set `FRONTEND_ORIGIN` on the backend to the frontend URL.
+### Render setup
 
-I left the code ready for that split deployment, but the actual public hosting step still needs a platform and credentials.
+1. Create a new web service on Render and connect this GitHub repo.
+2. Use the included `render.yaml` blueprint or the equivalent manual settings.
+3. Deploy the `main` branch.
+4. After the first deploy, Render will give you a permanent public URL.
+
+The app is configured to build the frontend into `backend/frontend_build`, run Django behind Gunicorn, and serve the UI and API from one permanent origin.
