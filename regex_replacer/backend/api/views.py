@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_http_methods
 
 from .models import UploadBatch
-from .services import apply_transformation, detect_text_columns, read_uploaded_file, write_processed_file
+from .services import apply_transformation, detect_text_columns, frame_to_records, read_uploaded_file, write_processed_file
 
 
 def _json_body(request):
@@ -69,7 +69,7 @@ def upload_file(request):
 
     batch.row_count = int(df.shape[0])
     batch.column_names = list(df.columns.astype(str))
-    batch.preview_rows = df.head(50).fillna("").to_dict(orient="records")
+    batch.preview_rows = frame_to_records(df, limit=50)
     batch.target_columns = detect_text_columns(df)
     batch.save()
 

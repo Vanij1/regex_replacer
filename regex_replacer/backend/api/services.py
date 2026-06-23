@@ -23,6 +23,10 @@ def _clean_preview_frame(df: pd.DataFrame, limit: int = 50) -> list[dict]:
     return preview.to_dict(orient="records")
 
 
+def frame_to_records(df: pd.DataFrame, limit: int = 50) -> list[dict]:
+    return _clean_preview_frame(df, limit=limit)
+
+
 def read_uploaded_file(path: str):
     suffix = Path(path).suffix.lower()
     if suffix in {".xlsx", ".xls"}:
@@ -117,4 +121,3 @@ def apply_transformation(
         "processed_df": updated,
         "preview_rows": _clean_preview_frame(updated),
     }
-
