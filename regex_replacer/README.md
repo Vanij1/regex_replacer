@@ -70,13 +70,6 @@ The Vite dev server proxies `/api` requests to `http://127.0.0.1:8000`.
 - The backend stores uploads and processed files on disk for repeatable processing.
 - A second transformation mode, `mask`, is included as a small creative extension alongside standard replacement.
 
-## Demo video
-
-Embed your demo video URL here after recording:
-
-```md
-[Watch the demo](https://your-video-link.example)
-```
 
 ## Deployment
 
